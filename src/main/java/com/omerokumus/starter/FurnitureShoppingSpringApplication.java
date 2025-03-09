@@ -1,11 +1,11 @@
-package com.example.starter;
+package com.omerokumus.starter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.example")
+@ComponentScan(basePackages = "com.omerokumus")
 public class FurnitureShoppingSpringApplication {
 
 	public static void main(String[] args) {

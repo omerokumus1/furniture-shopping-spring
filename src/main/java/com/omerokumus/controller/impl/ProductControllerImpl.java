@@ -1,14 +1,11 @@
-package com.example.controller.impl;
+package com.omerokumus.controller.impl;
 
-import com.example.controller.Data;
-import com.example.controller.IProductController;
-import com.example.dto.DtoProduct;
-import com.example.dto.DtoProductDetail;
-import com.example.service.IProductService;
-import com.example.service.model.ImageData;
-import com.example.util.Pair;
+import com.omerokumus.controller.IProductController;
+import com.omerokumus.dto.DtoProduct;
+import com.omerokumus.dto.DtoProductDetail;
+import com.omerokumus.service.IProductService;
+import com.omerokumus.service.model.ImageData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @RestController

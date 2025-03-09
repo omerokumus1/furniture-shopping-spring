@@ -1,4 +1,4 @@
-package com.example.starter;
+package com.omerokumus.starter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

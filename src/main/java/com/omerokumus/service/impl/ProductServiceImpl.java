@@ -1,10 +1,10 @@
-package com.example.service.impl;
+package com.omerokumus.service.impl;
 
-import com.example.controller.Data;
-import com.example.dto.DtoProduct;
-import com.example.dto.DtoProductDetail;
-import com.example.service.IProductService;
-import com.example.service.model.ImageData;
+import com.omerokumus.controller.Data;
+import com.omerokumus.dto.DtoProduct;
+import com.omerokumus.dto.DtoProductDetail;
+import com.omerokumus.service.IProductService;
+import com.omerokumus.service.model.ImageData;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;

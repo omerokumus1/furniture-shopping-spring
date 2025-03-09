@@ -1,7 +1,6 @@
-package com.example.util;
+package com.omerokumus.util;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
 @Getter

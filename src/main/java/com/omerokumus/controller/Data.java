@@ -1,7 +1,7 @@
-package com.example.controller;
+package com.omerokumus.controller;
 
-import com.example.dto.DtoProduct;
-import com.example.dto.DtoProductDetail;
+import com.omerokumus.dto.DtoProduct;
+import com.omerokumus.dto.DtoProductDetail;
 
 import java.util.List;
 

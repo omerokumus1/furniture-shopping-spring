@@ -1,8 +1,8 @@
-package com.example.service;
+package com.omerokumus.service;
 
-import com.example.dto.DtoProduct;
-import com.example.dto.DtoProductDetail;
-import com.example.service.model.ImageData;
+import com.omerokumus.dto.DtoProduct;
+import com.omerokumus.dto.DtoProductDetail;
+import com.omerokumus.service.model.ImageData;
 
 import java.util.List;
 import java.util.Optional;

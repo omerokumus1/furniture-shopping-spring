@@ -8,7 +8,7 @@
 		<version>3.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.omerokumus</groupId>
 	<artifactId>furniture-shopping-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>furniture-shopping-spring</name>
