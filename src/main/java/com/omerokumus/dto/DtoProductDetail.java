@@ -15,6 +15,6 @@ public class DtoProductDetail {
     private double price;
     private String priceUnit;
     private String description;
-    private List<String> images;
+    private List<String> imageNames;
     private List<String> colorCodes;
 }
