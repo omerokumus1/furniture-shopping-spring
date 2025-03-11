@@ -4,6 +4,7 @@ import com.omerokumus.controller.IProductController;
 import com.omerokumus.dto.DtoProduct;
 import com.omerokumus.dto.DtoProductDetail;
 import com.omerokumus.service.IProductService;
+import com.omerokumus.service.impl.ProductServiceImpl;
 import com.omerokumus.service.model.ImageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -24,7 +25,7 @@ public class ProductControllerImpl implements IProductController {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<DtoProductDetail> getProductDetailById(@PathVariable int id) {
+    public ResponseEntity<DtoProductDetail> getProductDetailById(@PathVariable Long id) {
         Optional<DtoProductDetail> productDetail = productService.getProductById(id);
         return productDetail.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -53,7 +54,7 @@ public class ProductControllerImpl implements IProductController {
     }
 
     @GetMapping("/{productId}/images")
-    public ResponseEntity<List<byte[]>> getProductImages(@PathVariable int productId) {
+    public ResponseEntity<List<byte[]>> getProductImages(@PathVariable Long productId) {
         try {
             List<byte[]> images = productService.getProductImages(productId);
             if (images.isEmpty()) {
@@ -64,4 +65,10 @@ public class ProductControllerImpl implements IProductController {
             return ResponseEntity.internalServerError().build();
         }
     }
+
+
+//    @GetMapping("/saveAll")
+//    public void saveAll() {
+//        ((ProductServiceImpl)productService).saveAll();
+//    }
 }

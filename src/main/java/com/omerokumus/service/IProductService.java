@@ -10,10 +10,10 @@ import java.util.Optional;
 public interface IProductService {
     List<DtoProduct> getAllProducts();
 
-    Optional<DtoProductDetail> getProductById(int id);
+    Optional<DtoProductDetail> getProductById(Long id);
 
     ImageData getProductImage(String imageName) throws Exception;
 
-    List<byte[]> getProductImages(int productId);
+    List<byte[]> getProductImages(Long productId);
 
 }
