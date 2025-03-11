@@ -1,10 +1,14 @@
 package com.omerokumus.service.impl;
 
-import com.omerokumus.controller.Data;
+import com.omerokumus.controller.DummyData;
 import com.omerokumus.dto.DtoProduct;
 import com.omerokumus.dto.DtoProductDetail;
+import com.omerokumus.entity.ProductEntity;
+import com.omerokumus.repository.ProductRepository;
 import com.omerokumus.service.IProductService;
 import com.omerokumus.service.model.ImageData;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -19,17 +23,29 @@ import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements IProductService {
+
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
     public List<DtoProduct> getAllProducts() {
-        return Data.products;
+        List<ProductEntity> products = productRepository.findAll();
+        return products.stream()
+                .map(product -> {
+                    DtoProduct dtoProduct = new DtoProduct();
+                    BeanUtils.copyProperties(product, dtoProduct);
+                    return dtoProduct;
+                })
+                .toList();
     }
 
     @Override
-    public Optional<DtoProductDetail> getProductById(int id) {
-        for (DtoProductDetail detail : Data.productDetails) {
-            if (detail.getId() == id) {
-                return Optional.of(detail);
-            }
+    public Optional<DtoProductDetail> getProductById(Long id) {
+        Optional<ProductEntity> productEntity = productRepository.findById(id);
+        if (productEntity.isPresent()) {
+            DtoProductDetail dtoProductDetail = new DtoProductDetail();
+            BeanUtils.copyProperties(productEntity.get(), dtoProductDetail);
+            return Optional.of(dtoProductDetail);
         }
         return Optional.empty();
     }
@@ -45,12 +61,13 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public List<byte[]> getProductImages(int productId) {
-        List<String> imageNames = Data.productDetails.stream()
-                .filter(detail -> detail.getId() == productId)
-                .findFirst()
-                .map(DtoProductDetail::getImages)
-                .orElse(List.of());
+    public List<byte[]> getProductImages(Long productId) {
+        Optional<ProductEntity> productEntity = productRepository.findById(productId);
+        if (productEntity.isEmpty()) {
+            return List.of();
+        }
+
+        List<String> imageNames = productEntity.get().getImageNames();
         return imageNames.stream()
                 .map(imageName -> {
                     try {
@@ -68,5 +85,13 @@ public class ProductServiceImpl implements IProductService {
     private Resource getImageResource(String imageName) throws MalformedURLException {
         Path path = Paths.get("src/main/resources/static/products").resolve(imageName).normalize();
         return new UrlResource(path.toUri());
+    }
+
+    public void saveAll() {
+        ProductEntity lamp = new ProductEntity(null, "Lamp", 12.99, "$", DummyData.lorem1, "lamp_white_1.webp", DummyData.lampImages, DummyData.lampColors);
+        ProductEntity sofa = new ProductEntity(null, "Sofa", 29.99, "$", DummyData.lorem2, "sofa_white_1.webp", DummyData.sofaImages, DummyData.sofaColors);
+        ProductEntity wardrobe = new ProductEntity(null, "Wardrobe", 49.99, "$", DummyData.lorem3, "wardrobe_white_1.webp", DummyData.wardrobeImages, DummyData.wardrobeColors);
+        ProductEntity bookcase = new ProductEntity(null, "Bookcase", 39.99, "$", DummyData.lorem4, "bookcase_white_1.webp", DummyData.bookcaseImages, DummyData.bookcaseColors);
+        productRepository.saveAll(List.of(lamp, sofa, wardrobe, bookcase));
     }
 }
