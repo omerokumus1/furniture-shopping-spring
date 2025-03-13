@@ -8,12 +8,12 @@ import java.util.List;
 
 public interface IProductController {
 
-    ResponseEntity<DtoProductDetail> getProductDetailById(int id);
+    ResponseEntity<DtoProductDetail> getProductDetailById(Long id);
 
     ResponseEntity<List<DtoProduct>> getAllProducts();
 
     ResponseEntity<byte[]> getProductImage(String imageName);
 
-    ResponseEntity<List<byte[]>> getProductImages(int id);
+    ResponseEntity<List<byte[]>> getProductImages(Long id);
 
 }
