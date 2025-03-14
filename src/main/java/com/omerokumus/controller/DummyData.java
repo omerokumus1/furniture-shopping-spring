@@ -7,10 +7,10 @@ import java.util.List;
 
 public class DummyData {
     public static final List<DtoProduct> products = List.of(
-            new DtoProduct(1, "Lamp", 12.99, "$", "lamp_white_1.webp"),
-            new DtoProduct(2, "Sofa", 29.99, "$", "sofa_white_1.webp"),
-            new DtoProduct(2, "Wardrobe", 49.99, "$", "wardrobe_white_1.webp"),
-            new DtoProduct(2, "Bookcase", 39.99, "$", "bookcase_white_1.webp")
+            new DtoProduct(1L, "Lamp", 12.99, "$", "lamp_white_1.webp"),
+            new DtoProduct(2L, "Sofa", 29.99, "$", "sofa_white_1.webp"),
+            new DtoProduct(2L, "Wardrobe", 49.99, "$", "wardrobe_white_1.webp"),
+            new DtoProduct(2L, "Bookcase", 39.99, "$", "bookcase_white_1.webp")
     );
 
    public static final String lorem1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt purus eget fringilla pharetra. Aliquam erat volutpat. Maecenas nec vehicula justo. Vestibulum fermentum luctus lobortis. In ac volutpat erat. Nullam pretium tortor eu porta scelerisque. Morbi euismod urna eu nisi pellentesque, id consequat mauris mollis. Aenean non ligula vel justo vulputate facilisis eget id nibh.";
@@ -57,7 +57,7 @@ public class DummyData {
     public static final List<String> bookcaseColors = List.of("#ffffff");
 
     public static final List<DtoProductDetail> productDetails = List.of(
-            new DtoProductDetail(1, "Lamp", 12.99, "$", lorem1, List.of(
+            new DtoProductDetail(1L, "Lamp", 12.99, "$", lorem1, List.of(
                     "lamp_white_1.webp",
                     "lamp_white_2.webp",
                     "lamp_white_3.webp",
@@ -66,7 +66,7 @@ public class DummyData {
                     "lamp_black_1.webp",
                     "lamp_black_2.webp"
             ), List.of("#ffffff", "#89cff0", "000000")),
-            new DtoProductDetail(2, "Sofa", 29.99, "$", lorem2, List.of(
+            new DtoProductDetail(2L, "Sofa", 29.99, "$", lorem2, List.of(
                     "sofa_white_1.webp",
                     "sofa_white_2.webp",
                     "sofa_white_3.webp",
@@ -74,13 +74,13 @@ public class DummyData {
                     "sofa_grey_2.webp",
                     "sofa_grey_3.webp"
             ), List.of("#ffffff", "#A29FA5")),
-            new DtoProductDetail(3, "Wardrobe", 49.99, "$", lorem3, List.of(
+            new DtoProductDetail(3L, "Wardrobe", 49.99, "$", lorem3, List.of(
                     "wardrobe_white_1.webp",
                     "wardrobe_white_2.webp",
                     "wardrobe_white_3.webp",
                     "wardrobe_white_4.webp"
             ), List.of("#ffffff")),
-            new DtoProductDetail(4, "Bookcase", 39.99, "$", lorem4, List.of(
+            new DtoProductDetail(4L, "Bookcase", 39.99, "$", lorem4, List.of(
                     "bookcase_white_1.webp",
                     "bookcase_white_2.webp",
                     "bookcase_white_3.webp"
