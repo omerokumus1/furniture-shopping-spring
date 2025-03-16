@@ -1,7 +1,7 @@
-package com.omerokumus.controller;
+package com.omerokumus.feature.product.controller;
 
-import com.omerokumus.dto.DtoProduct;
-import com.omerokumus.dto.DtoProductDetail;
+import com.omerokumus.feature.product.dto.DtoProduct;
+import com.omerokumus.feature.product.dto.DtoProductDetail;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

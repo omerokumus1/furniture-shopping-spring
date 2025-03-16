@@ -1,12 +1,11 @@
-package com.omerokumus.service.impl;
+package com.omerokumus.feature.product.service;
 
-import com.omerokumus.controller.DummyData;
-import com.omerokumus.dto.DtoProduct;
-import com.omerokumus.dto.DtoProductDetail;
-import com.omerokumus.entity.ProductEntity;
-import com.omerokumus.repository.ProductRepository;
-import com.omerokumus.service.IProductService;
-import com.omerokumus.service.model.ImageData;
+import com.omerokumus.feature.product.controller.DummyData;
+import com.omerokumus.feature.product.dto.DtoProduct;
+import com.omerokumus.feature.product.dto.DtoProductDetail;
+import com.omerokumus.feature.product.entity.ProductEntity;
+import com.omerokumus.feature.product.repository.ProductRepository;
+import com.omerokumus.feature.product.service.model.ImageData;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

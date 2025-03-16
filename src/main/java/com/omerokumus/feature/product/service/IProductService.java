@@ -1,8 +1,8 @@
-package com.omerokumus.service;
+package com.omerokumus.feature.product.service;
 
-import com.omerokumus.dto.DtoProduct;
-import com.omerokumus.dto.DtoProductDetail;
-import com.omerokumus.service.model.ImageData;
+import com.omerokumus.feature.product.dto.DtoProduct;
+import com.omerokumus.feature.product.dto.DtoProductDetail;
+import com.omerokumus.feature.product.service.model.ImageData;
 
 import java.util.List;
 import java.util.Optional;

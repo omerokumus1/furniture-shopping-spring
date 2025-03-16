@@ -1,4 +1,4 @@
-package com.omerokumus.entity;
+package com.omerokumus.feature.product.entity;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
