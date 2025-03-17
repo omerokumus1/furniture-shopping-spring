@@ -1,0 +1,2 @@
+- Base URL: https://furniture-shopping-spring.onrender.com
+- Swagger: https://furniture-shopping-spring.onrender.com/swagger-ui/index.html

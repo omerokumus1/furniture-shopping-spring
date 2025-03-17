@@ -1,11 +1,9 @@
-package com.omerokumus.controller.impl;
+package com.omerokumus.feature.product.controller;
 
-import com.omerokumus.controller.IProductController;
-import com.omerokumus.dto.DtoProduct;
-import com.omerokumus.dto.DtoProductDetail;
-import com.omerokumus.service.IProductService;
-import com.omerokumus.service.impl.ProductServiceImpl;
-import com.omerokumus.service.model.ImageData;
+import com.omerokumus.feature.product.dto.DtoProduct;
+import com.omerokumus.feature.product.dto.DtoProductDetail;
+import com.omerokumus.feature.product.service.IProductService;
+import com.omerokumus.feature.product.service.model.ImageData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;

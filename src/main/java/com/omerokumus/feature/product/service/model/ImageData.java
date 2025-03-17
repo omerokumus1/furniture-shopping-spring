@@ -1,4 +1,4 @@
-package com.omerokumus.service.model;
+package com.omerokumus.feature.product.service.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.omerokumus.dto;
+package com.omerokumus.feature.product.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
