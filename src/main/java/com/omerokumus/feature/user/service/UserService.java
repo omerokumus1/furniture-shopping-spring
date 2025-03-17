@@ -23,8 +23,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserDto getUser(Long userId) {
-        Optional<UserEntity> userEntity = userRepository.findById(userId);
+    public UserDto getUser(Long userId) throws NotFoundException {
         Optional<UserEntity> userEntityOpt = userRepository.findById(userId);
         UserDto userDto = new UserDto();
         if (userEntityOpt.isPresent()) {
