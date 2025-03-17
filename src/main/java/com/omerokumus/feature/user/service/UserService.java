@@ -25,9 +25,10 @@ public class UserService {
 
     public UserDto getUser(Long userId) {
         Optional<UserEntity> userEntity = userRepository.findById(userId);
+        Optional<UserEntity> userEntityOpt = userRepository.findById(userId);
         UserDto userDto = new UserDto();
-        if (userEntity.isPresent()) {
-            BeanUtils.copyProperties(userEntity, userDto);
+        if (userEntityOpt.isPresent()) {
+            BeanUtils.copyProperties(userEntityOpt.get(), userDto);
             return userDto;
         }
         return null;
