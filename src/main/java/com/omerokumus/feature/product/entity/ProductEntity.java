@@ -2,12 +2,14 @@ package com.omerokumus.feature.product.entity;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.omerokumus.feature.user.entity.UserEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -38,6 +40,9 @@ public class ProductEntity {
 
     @Column(name = "color_codes", columnDefinition = "JSON")
     private String colorCodes;
+
+    @ManyToMany(mappedBy = "favoriteProducts")
+    private Set<UserEntity> users = new HashSet<>();
 
     public ProductEntity(Long id, String name, double price, String priceUnit, String description, String mainImage, List<String> imageNames, List<String> colorCodes) {
         this.id = id;
