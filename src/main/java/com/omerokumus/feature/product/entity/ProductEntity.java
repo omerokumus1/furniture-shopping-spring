@@ -6,6 +6,7 @@ import com.omerokumus.feature.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Set;
 @Table(name = "products")
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode(exclude = "users")
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,12 +57,10 @@ public class ProductEntity {
         this.setColorCodes(colorCodes);
     }
 
-
     public List<String> getColorCodes() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(colorCodes, new TypeReference<>() {
-            });
+            return objectMapper.readValue(colorCodes, new TypeReference<>() {});
         } catch (Exception e) {
             return null;
         }
@@ -78,8 +78,7 @@ public class ProductEntity {
     public List<String> getImageNames() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(imageNames, new TypeReference<>() {
-            });
+            return objectMapper.readValue(imageNames, new TypeReference<>() {});
         } catch (Exception e) {
             return null;
         }

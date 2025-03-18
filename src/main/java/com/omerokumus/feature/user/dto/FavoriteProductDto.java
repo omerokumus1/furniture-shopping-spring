@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,13 +17,13 @@ public class FavoriteProductDto {
 
     private String description;
 
-    private String price;
+    private double price;
 
     private String priceUnit;
 
     private String mainImage;
 
-    private String imageNames;
+    private List<String> imageNames;
 
-    private String colorCodes;
+    private List<String> colorCodes;
 }
