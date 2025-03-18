@@ -66,5 +66,15 @@ public class UserController {
         return ResponseEntity.internalServerError().build();
     }
 
+    @DeleteMapping("/{userId}/remove-favorite-product/{productId}")
+    public ResponseEntity<FavoriteProductDto> removeFavoriteProduct(@PathVariable Long userId, @PathVariable Long productId) throws NotFoundException {
+        FavoriteProductDto favoriteProductDto = userService.removeFavoriteProduct(userId, productId);
+        if (favoriteProductDto != null) {
+            return ResponseEntity.ok(favoriteProductDto);
+        }
+        return ResponseEntity.internalServerError().build();
+    }
+
+
 
 }
