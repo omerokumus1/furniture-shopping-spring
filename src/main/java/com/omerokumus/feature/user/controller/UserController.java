@@ -3,6 +3,8 @@ package com.omerokumus.feature.user.controller;
 import com.omerokumus.feature.user.dto.FavoriteProductDto;
 import com.omerokumus.feature.user.dto.UserDtoRequest;
 import com.omerokumus.feature.user.dto.UserDto;
+import com.omerokumus.feature.user.exception.NotFoundException;
+import com.omerokumus.feature.user.exception.ProductAlreadyInFavoritesException;
 import com.omerokumus.feature.user.exception.UserAlreadyExistsException;
 import com.omerokumus.feature.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 // TODO add validations
-// TODO add exception handling
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -20,13 +21,23 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserDto> getUser(@PathVariable Long userId) {
+    public ResponseEntity<UserDto> getUser(@PathVariable Long userId) throws NotFoundException {
         UserDto userDto = userService.getUser(userId);
         if (userDto != null) {
             return ResponseEntity.ok(userDto);
         }
         return ResponseEntity.notFound().build();
     }
+
+    // TODO
+//    @GetMapping("/{email}")
+//    public ResponseEntity<UserDto> getUser(@PathVariable String userEmail) throws NotFoundException {
+//        UserDto userDto = userService.getUser(userEmail);
+//        if (userDto != null) {
+//            return ResponseEntity.ok(userDto);
+//        }
+//        return ResponseEntity.notFound().build();
+//    }
 
     @PostMapping("/add-user")
     public ResponseEntity<UserDto> addUser(@RequestBody UserDtoRequest userDtoRequest) throws UserAlreadyExistsException {
@@ -38,7 +49,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/favorite-products")
-    public ResponseEntity<List<FavoriteProductDto>> getFavoriteProducts(@PathVariable Long userId) {
+    public ResponseEntity<List<FavoriteProductDto>> getFavoriteProducts(@PathVariable Long userId) throws NotFoundException {
         List<FavoriteProductDto> favoriteProducts = userService.getFavoriteProducts(userId);
         if (favoriteProducts != null) {
             return ResponseEntity.ok(favoriteProducts);
@@ -47,7 +58,7 @@ public class UserController {
     }
 
     @PostMapping("/{userId}/add-favorite-product/{productId}")
-    public ResponseEntity<FavoriteProductDto> addFavoriteProduct(@RequestParam Long userId, @RequestParam Long productId) {
+    public ResponseEntity<FavoriteProductDto> addFavoriteProduct(@PathVariable Long userId, @PathVariable Long productId) throws NotFoundException, ProductAlreadyInFavoritesException {
         FavoriteProductDto favoriteProductDto = userService.addFavoriteProduct(userId, productId);
         if (favoriteProductDto != null) {
             return ResponseEntity.ok(favoriteProductDto);
