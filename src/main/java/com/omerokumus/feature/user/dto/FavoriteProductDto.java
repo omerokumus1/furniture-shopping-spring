@@ -15,15 +15,11 @@ public class FavoriteProductDto {
 
     private String name;
 
-    private String description;
+    private String mainImage;
 
     private double price;
 
     private String priceUnit;
 
-    private String mainImage;
-
-    private List<String> imageNames;
-
-    private List<String> colorCodes;
+    private Boolean isInCart = false;
 }

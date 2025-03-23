@@ -3,9 +3,7 @@ package com.omerokumus.feature.product.controller;
 import com.omerokumus.feature.product.dto.DtoProduct;
 import com.omerokumus.feature.product.dto.DtoProductDetail;
 import com.omerokumus.feature.product.service.IProductService;
-import com.omerokumus.feature.product.service.model.ImageData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,35 +32,6 @@ public class ProductControllerImpl implements IProductController {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
-    @Override
-    @GetMapping(value = "/images/{imageName}")
-    public ResponseEntity<byte[]> getProductImage(@PathVariable String imageName) {
-        try {
-            ImageData imageData = productService.getProductImage(imageName);
-            if (imageData != null) {
-                return ResponseEntity.ok()
-                        .header(HttpHeaders.CONTENT_TYPE, imageData.getContentType())
-                        .body(imageData.getData());
-            }
-            return ResponseEntity.notFound().build();
-
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
-        }
-    }
-
-    @GetMapping("/{productId}/images")
-    public ResponseEntity<List<byte[]>> getProductImages(@PathVariable Long productId) {
-        try {
-            List<byte[]> images = productService.getProductImages(productId);
-            if (images.isEmpty()) {
-                return ResponseEntity.notFound().build();
-            }
-            return ResponseEntity.ok(images);
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
-        }
-    }
 
 
 //    @GetMapping("/saveAll")
