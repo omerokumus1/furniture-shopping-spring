@@ -37,6 +37,16 @@ public class UserService {
         throw new NotFoundException("User with id " + userId + " not found.");
     }
 
+    public UserDto getUserByEmail(String userEmail) throws NotFoundException {
+        Optional<UserEntity> userEntityOpt = userRepository.findByEmail(userEmail);
+        UserDto userDto = new UserDto();
+        if (userEntityOpt.isPresent()) {
+            BeanUtils.copyProperties(userEntityOpt.get(), userDto);
+            return userDto;
+        }
+        throw new NotFoundException("User with email " + userEmail + " not found.");
+    }
+
 
     public UserDto addUser(UserDtoRequest userDtoRequest) throws UserAlreadyExistsException {
         Optional<UserEntity> existingUser = userRepository.findByEmail(userDtoRequest.getEmail());

@@ -29,15 +29,15 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    // TODO
-//    @GetMapping("/{email}")
-//    public ResponseEntity<UserDto> getUser(@PathVariable String userEmail) throws NotFoundException {
-//        UserDto userDto = userService.getUser(userEmail);
-//        if (userDto != null) {
-//            return ResponseEntity.ok(userDto);
-//        }
-//        return ResponseEntity.notFound().build();
-//    }
+
+    @GetMapping("/user-by-email/{userEmail}")
+    public ResponseEntity<UserDto> getUserByEmail(@PathVariable(name = "userEmail") String userEmail) throws NotFoundException {
+        UserDto userDto = userService.getUserByEmail(userEmail);
+        if (userDto != null) {
+            return ResponseEntity.ok(userDto);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     @PostMapping("/add-user")
     public ResponseEntity<UserDto> addUser(@RequestBody UserDtoRequest userDtoRequest) throws UserAlreadyExistsException {
