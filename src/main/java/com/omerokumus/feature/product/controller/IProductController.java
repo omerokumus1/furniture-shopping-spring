@@ -12,8 +12,5 @@ public interface IProductController {
 
     ResponseEntity<List<DtoProduct>> getAllProducts();
 
-    ResponseEntity<byte[]> getProductImage(String imageName);
-
-    ResponseEntity<List<byte[]>> getProductImages(Long id);
 
 }
