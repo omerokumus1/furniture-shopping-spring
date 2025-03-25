@@ -5,10 +5,7 @@ import com.omerokumus.feature.product.dto.DtoProductDetail;
 import com.omerokumus.feature.product.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,8 +17,8 @@ public class ProductControllerImpl implements IProductController {
     private IProductService productService;
 
     @Override
-    @GetMapping("/{id}")
-    public ResponseEntity<DtoProductDetail> getProductDetailById(@PathVariable Long productId, Long userId) {
+    @GetMapping("/{productId}")
+    public ResponseEntity<DtoProductDetail> getProductDetailById(@PathVariable Long productId, @RequestParam Long userId) {
         Optional<DtoProductDetail> productDetail = productService.getProductById(productId, userId);
         return productDetail.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
