@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IProductController {
 
-    ResponseEntity<DtoProductDetail> getProductDetailById(Long id);
+    ResponseEntity<DtoProductDetail> getProductDetailById(Long productId, Long userId);
 
     ResponseEntity<List<DtoProduct>> getAllProducts();
 

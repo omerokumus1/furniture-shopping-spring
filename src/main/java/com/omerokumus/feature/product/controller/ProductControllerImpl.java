@@ -21,8 +21,8 @@ public class ProductControllerImpl implements IProductController {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<DtoProductDetail> getProductDetailById(@PathVariable Long id) {
-        Optional<DtoProductDetail> productDetail = productService.getProductById(id);
+    public ResponseEntity<DtoProductDetail> getProductDetailById(@PathVariable Long productId, Long userId) {
+        Optional<DtoProductDetail> productDetail = productService.getProductById(productId, userId);
         return productDetail.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
