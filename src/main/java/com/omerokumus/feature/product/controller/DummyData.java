@@ -65,7 +65,7 @@ public class DummyData {
                     "lamp_blue_2.webp",
                     "lamp_black_1.webp",
                     "lamp_black_2.webp"
-            ), List.of("#ffffff", "#89cff0", "000000")),
+            ), List.of("#ffffff", "#89cff0", "000000"),false),
             new DtoProductDetail(2L, "Sofa", 29.99, "$", lorem2, List.of(
                     "sofa_white_1.webp",
                     "sofa_white_2.webp",
@@ -73,18 +73,18 @@ public class DummyData {
                     "sofa_grey_1.webp",
                     "sofa_grey_2.webp",
                     "sofa_grey_3.webp"
-            ), List.of("#ffffff", "#A29FA5")),
+            ), List.of("#ffffff", "#A29FA5"), false),
             new DtoProductDetail(3L, "Wardrobe", 49.99, "$", lorem3, List.of(
                     "wardrobe_white_1.webp",
                     "wardrobe_white_2.webp",
                     "wardrobe_white_3.webp",
                     "wardrobe_white_4.webp"
-            ), List.of("#ffffff")),
+            ), List.of("#ffffff"),false),
             new DtoProductDetail(4L, "Bookcase", 39.99, "$", lorem4, List.of(
                     "bookcase_white_1.webp",
                     "bookcase_white_2.webp",
                     "bookcase_white_3.webp"
-            ), List.of("#ffffff"))
+            ), List.of("#ffffff"), false)
     );
 
 

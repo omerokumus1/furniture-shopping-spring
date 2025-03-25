@@ -14,7 +14,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     @Query("SELECT user FROM UserEntity user WHERE user.email = :email")
     Optional<UserEntity> findByEmail(String email);
 
-    @Query("SELECT CASE WHEN COUNT(f) > 0 THEN true ELSE false END " +
-            "FROM User u JOIN u.favoriteProducts f WHERE u.id = :userId AND f.id = :productId")
+    @Query("SELECT CASE WHEN COUNT(p) > 0 THEN TRUE ELSE FALSE END " +
+            "FROM UserEntity u JOIN u.favoriteProducts p " +
+            "WHERE u.id = :userId AND p.id = :productId")
     boolean isInFavoriteProducts(@Param("userId") Long userId, @Param("productId") Long productId);
 }
