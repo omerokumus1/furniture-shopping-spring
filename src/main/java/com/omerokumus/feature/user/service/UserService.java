@@ -132,4 +132,9 @@ public class UserService {
         BeanUtils.copyProperties(productToRemove, favoriteProductDto);
         return favoriteProductDto;
     }
+
+
+    public boolean isInFavoriteProducts(Long userId, Long productId) {
+        return userRepository.isInFavoriteProducts(userId, productId);
+    }
 }

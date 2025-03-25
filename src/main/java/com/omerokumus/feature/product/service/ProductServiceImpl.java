@@ -5,6 +5,7 @@ import com.omerokumus.feature.product.dto.DtoProduct;
 import com.omerokumus.feature.product.dto.DtoProductDetail;
 import com.omerokumus.feature.product.entity.ProductEntity;
 import com.omerokumus.feature.product.repository.ProductRepository;
+import com.omerokumus.feature.user.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class ProductServiceImpl implements IProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public List<DtoProduct> getAllProducts() {
@@ -31,16 +35,16 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public Optional<DtoProductDetail> getProductById(Long id) {
-        Optional<ProductEntity> productEntity = productRepository.findById(id);
+    public Optional<DtoProductDetail> getProductById(Long productId, Long userId) {
+        Optional<ProductEntity> productEntity = productRepository.findById(productId);
         if (productEntity.isPresent()) {
             DtoProductDetail dtoProductDetail = new DtoProductDetail();
             BeanUtils.copyProperties(productEntity.get(), dtoProductDetail);
+            dtoProductDetail.setIsInFavoriteProducts(userService.isInFavoriteProducts(userId, productId));
             return Optional.of(dtoProductDetail);
         }
         return Optional.empty();
     }
-
 
 
     public void saveAll() {
