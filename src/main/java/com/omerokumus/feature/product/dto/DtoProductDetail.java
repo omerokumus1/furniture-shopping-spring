@@ -17,5 +17,5 @@ public class DtoProductDetail {
     private String description;
     private List<String> imageNames;
     private List<String> colorCodes;
-    private Boolean isInFavoriteProducts;
+    private Boolean isInFavoriteProducts = false;
 }
